@@ -1,0 +1,41 @@
+{
+  "name": "img-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "m:gen": "sequelize-cli migration:generate --name",
+    "m:run": "sequelize-cli db:migrate",
+    "m:rev": "sequelize-cli db:migrate:undo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "8.12.0",
+    "cors": "2.8.5",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "multer": "1.4.5-lts.1",
+    "mysql2": "3.2.0",
+    "sequelize": "6.29.3",
+    "yup": "1.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.13",
+    "@types/express": "4.17.17",
+    "@types/multer": "1.4.7",
+    "@types/node": "18.15.5",
+    "eslint": "8.36.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.1.1",
+    "nodemon": "2.0.22",
+    "sequelize-cli": "6.6.0"
+  }
+}
