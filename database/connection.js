@@ -1,9 +1,25 @@
 import { Sequelize } from 'sequelize';
 import options from '../config/database.options.js';
 import * as User from '../modules/users/models/user.model.js';
+import * as Image from '../modules/images/models/image.model.js';
 
 const sequelize = new Sequelize(options);
 
-sequelize.define(User.Model, User.ModelAttributes, User.ModelOptions);
+const UserModel = sequelize.define(
+  User.Model,
+  User.ModelAttributes,
+  User.ModelOptions
+);
+const ImageModel = sequelize.define(
+  Image.Model,
+  Image.ModelAttributes,
+  Image.ModelOptions
+);
+
+UserModel.hasMany(ImageModel, {
+  as: 'images'
+});
+
+ImageModel.belongsTo(UserModel);
 
 export default sequelize;
