@@ -1,6 +1,4 @@
 import { DataTypes } from 'sequelize';
-import '../../../utils/capitalize.js';
-import '../../../utils/lower.js';
 
 export const Model = 'Image';
 
@@ -11,17 +9,14 @@ export const ModelAttributes = {
     autoIncrement: true
   },
   description: {
-    type: DataTypes.STRING(200),
+    type: DataTypes.STRING(150),
     allowNull: false,
-    et(value) {
-      this.setDataValue('name', value.lower());
-    },
-    get() {
-      return this.getDataValue('name').capitalize();
+    set(value) {
+      this.setDataValue('description', value.trim());
     }
   },
   image: {
-    type: DataTypes.STRING(200),
+    type: DataTypes.STRING(150),
     allowNull: false
   },
   userId: {
