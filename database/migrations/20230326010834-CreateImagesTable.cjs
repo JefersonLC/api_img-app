@@ -10,11 +10,11 @@ module.exports = {
         autoIncrement: true
       },
       description: {
-        type: Sequelize.DataTypes.STRING(200),
+        type: Sequelize.DataTypes.STRING(150),
         allowNull: false
       },
       image: {
-        type: Sequelize.DataTypes.STRING(200),
+        type: Sequelize.DataTypes.STRING(150),
         allowNull: false
       },
       userId: {
