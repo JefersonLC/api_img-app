@@ -1,8 +1,10 @@
 import UserService from './users.service.js';
 import TokenService from '../token/token.service.js';
+import EmailService from '../email/email.service.js';
 
 const userService = new UserService();
 const tokenService = new TokenService();
+const emailService = new EmailService();
 
 export async function index(req, res, next) {
   try {
@@ -24,8 +26,9 @@ export async function create(req, res, next) {
 
   try {
     const token = tokenService.create(payload);
-    const users = await userService.create(body, token);
-    res.json(users);
+    const newUser = await userService.create(body, token);
+    await emailService.sendEmailtoVerify(token, newUser.email);
+    res.json(newUser);
   } catch (error) {
     next(error);
   }
