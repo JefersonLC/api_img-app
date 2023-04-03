@@ -8,7 +8,8 @@ export default class UserService {
     return users;
   }
 
-  async create(data) {
+  async create(body, token) {
+    const data = Object.assign(body, { token });
     const modifiedUser = await models.User.create(data);
     return modifiedUser;
   }
