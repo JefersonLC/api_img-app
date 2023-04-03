@@ -26,6 +26,10 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      password: {
+        type: Sequelize.DataTypes.STRING(100),
+        allowNull: false
+      },
       token: {
         type: Sequelize.DataTypes.STRING(500),
         allowNull: false
@@ -33,7 +37,7 @@ module.exports = {
       isVerified: {
         type: Sequelize.DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
+        defaultValue: false,
         field: 'is_verified'
       }
     });
