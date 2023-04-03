@@ -9,7 +9,10 @@ const env = {
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
   DATABASE_NAME: process.env.DATABASE_NAME,
   DATABASE_PORT: Number(process.env.DATABASE_PORT),
-  SECRET: process.env.SECRET
+  SECRET: process.env.SECRET,
+  DOMAIN: process.env.DOMAIN,
+  EMAIL: process.env.EMAIL,
+  EMAIL_PASS: process.env.EMAIL_PASS
 };
 
 export default env;
