@@ -1,4 +1,5 @@
 import { DataTypes } from 'sequelize';
+import bcrypt from 'bcrypt';
 import '../../../utils/capitalize.js';
 import '../../../utils/lower.js';
 
@@ -45,6 +46,15 @@ export const ModelAttributes = {
       this.setDataValue('email', value.trim());
     }
   },
+  password: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+    set(value) {
+      const saltRounds = 10;
+      const hash = bcrypt.hashSync(value, saltRounds);
+      this.setDataValue('password', hash);
+    }
+  },
   token: {
     type: DataTypes.STRING(500),
     allowNull: false
@@ -52,7 +62,7 @@ export const ModelAttributes = {
   isVerified: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: true,
+    defaultValue: false,
     field: 'is_verified'
   }
 };
