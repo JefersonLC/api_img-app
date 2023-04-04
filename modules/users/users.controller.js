@@ -15,6 +15,26 @@ export async function index(req, res, next) {
   }
 }
 
+export async function getUser(req, res, next) {
+  const { id } = req.params;
+  try {
+    const user = await userService.findById(id);
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function remove(req, res, next) {
+  const { id } = req.params;
+  try {
+    await userService.remove(id);
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function create(req, res, next) {
   const body = req.body;
   const payload = {
