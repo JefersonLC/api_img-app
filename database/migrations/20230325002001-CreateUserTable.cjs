@@ -39,6 +39,12 @@ module.exports = {
         allowNull: false,
         defaultValue: false,
         field: 'is_verified'
+      },
+      isAdmin: {
+        type: Sequelize.DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+        field: 'is_admin'
       }
     });
   },
