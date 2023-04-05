@@ -8,14 +8,14 @@ export function login(req, res, next) {
     const payload = {
       id: dataValues.id,
       name: dataValues.name,
-      lastname: dataValues.lastname
+      lastname: dataValues.lastname,
+      age: dataValues.age,
+      email: dataValues.email,
+      isAdmin: dataValues.isAdmin
     };
     const token = tokenService.create(payload);
 
-    res.json({
-      user: payload,
-      token
-    });
+    res.json({ accessToken: token });
   } catch (error) {
     next(error);
   }
