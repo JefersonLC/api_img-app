@@ -38,8 +38,7 @@
     "passport": "0.6.0",
     "passport-jwt": "4.0.1",
     "passport-local": "1.0.0",
-    "sequelize": "6.29.3",
-    "yup": "1.0.2"
+    "sequelize": "6.29.3"
   },
   "devDependencies": {
     "@types/cors": "2.8.13",
