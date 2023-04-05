@@ -1,4 +1,4 @@
-import { EmptyResultError, UniqueConstraintError } from 'sequelize';
+import { UniqueConstraintError } from 'sequelize';
 
 export function logError(err, req, res, next) {
   console.log(err);
@@ -26,22 +26,12 @@ export function syntaxError(err, req, res, next) {
   next(err);
 }
 
-export function expectedTokenError(err, req, res, next) {
-  if (err instanceof Error) {
-    return res.status(404).json({
-      name: err.name,
-      message: err.message
-    });
-  }
-  next(err);
-}
-
-export function emptyResultError(err, req, res, next) {
-  if (err instanceof EmptyResultError) {
-    return res.status(404).json({
-      name: err.name,
-      error: err.error,
-      message: err.message
+export function boomError(err, req, res, next) {
+  if (err.isBoom) {
+    return res.status(err.output.statusCode).json({
+      status: err.output.statusCode,
+      message: err.output.payload.message,
+      error: err.output.payload.error
     });
   }
   next(err);
