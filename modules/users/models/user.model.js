@@ -64,6 +64,12 @@ export const ModelAttributes = {
     allowNull: false,
     defaultValue: false,
     field: 'is_verified'
+  },
+  isAdmin: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+    field: 'is_admin'
   }
 };
 

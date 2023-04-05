@@ -19,6 +19,7 @@ export async function getUser(req, res, next) {
   const { id } = req.params;
   try {
     const user = await userService.findById(id);
+    if (!user) userService.ifUserDoesNotExist(user);
     res.json(user);
   } catch (error) {
     next(error);
@@ -49,6 +50,17 @@ export async function create(req, res, next) {
     const newUser = await userService.create(body, token);
     await emailService.sendEmailtoVerify(token, newUser.email);
     res.json(newUser);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function update(req, res, next) {
+  const { id } = req.params;
+  const body = req.body;
+  try {
+    const modifiedUser = await userService.update(id, body);
+    res.json(modifiedUser);
   } catch (error) {
     next(error);
   }
