@@ -20,6 +20,8 @@ UserModel.hasMany(ImageModel, {
   as: 'images'
 });
 
-ImageModel.belongsTo(UserModel);
+ImageModel.belongsTo(UserModel, {
+  as: 'user'
+});
 
 export default sequelize;
