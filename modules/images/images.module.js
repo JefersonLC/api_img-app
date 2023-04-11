@@ -1,18 +1,20 @@
 import { Router } from 'express';
 import passport from 'passport';
-import * as ImageController from './images.controller.js';
+import { upload } from '../../config/multer.js';
 import { validator } from '../../middlewares/validator.js';
-// import { isAdmin } from '../../middlewares/isAdmin.js';
+import * as ImageController from './images.controller.js';
 import { createSchema } from './schemas/create.schema.js';
+// import { isAdmin } from '../../middlewares/isAdmin.js';
 // import { updateSchema } from './schemas/update.schema.js';
 
-const userRouter = Router();
+const imageRouter = Router();
 
-userRouter
+imageRouter
   .route('/')
   .get(ImageController.index)
   .post(
     passport.authenticate('jwt', { session: false }),
+    upload.single('image'),
     validator(createSchema),
     ImageController.create
   );
@@ -25,4 +27,4 @@ userRouter
 //   .get(UserController.getUser)
 //   .post(UserController.remove);
 
-export default userRouter;
+export default imageRouter;
