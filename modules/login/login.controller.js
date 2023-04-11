@@ -7,10 +7,6 @@ export function login(req, res, next) {
     const { dataValues } = req.user;
     const payload = {
       id: dataValues.id,
-      name: dataValues.name,
-      lastname: dataValues.lastname,
-      age: dataValues.age,
-      email: dataValues.email,
       isAdmin: dataValues.isAdmin
     };
     const token = tokenService.create(payload);
