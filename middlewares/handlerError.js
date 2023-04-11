@@ -1,7 +1,15 @@
+import { MulterError } from 'multer';
 import { UniqueConstraintError } from 'sequelize';
 
 export function logError(err, req, res, next) {
   console.log(err);
+  next(err);
+}
+
+export function multerError(err, req, res, next) {
+  if (err instanceof MulterError) {
+    return res.status(409).json(err);
+  }
   next(err);
 }
 
