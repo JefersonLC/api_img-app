@@ -20,7 +20,7 @@ export default class EmailService {
       html: `
         <div>
           <p>
-            Verify your email: ${env.DOMAIN}/api/email/verify?token=${token}
+            Verify your email: ${env.DOMAIN}api/email/verify?token=${token}
           </p>
         </div>
       `
