@@ -16,7 +16,7 @@ export default class EmailService {
     const mailOptions = {
       from: env.EMAIL,
       to: userEmail,
-      subject: 'Email verification',
+      subject: 'Verify your email',
       html: `
         <div>
           <p>
