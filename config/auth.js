@@ -19,7 +19,7 @@ export const localStrategy = new LocalStrategy(
       if (!user) return done(boom.notFound('User not found'), false);
 
       if (!bcrypt.compareSync(password, user.password))
-        return done(boom.badRequest('Incorret password'), false);
+        return done(boom.badRequest('Incorrect password'), false);
 
       if (!user.isVerified)
         return done(boom.unauthorized('Email not verified'), false);
